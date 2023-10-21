@@ -1,39 +1,46 @@
-import path from 'path'
-import fs  from 'fs';
-
-
-
+import PRModel from "../Database/models/PR.js";
 
 export const getPR = (req, res) => {
-    const day = req.params.day.toLowerCase();
-    const filePath = path.join(process.cwd(), `/data/PR/${day}.json`);
-  
-    fs.readFile(filePath, 'utf8', (err, data) => {
-      if (err && err.code === 'ENOENT') {
-        return res.status(404).json({ error: 'Data tidak ditemukan untuk hari tersebut.' });
-      } else if (err) {
-        console.error(err);
-        return res.status(500).json({ error: 'Terjadi kesalahan saat mengambil data.' });
-      }
-  
-      let tasks = [];
-  
-      try {
-        tasks = JSON.parse(data);
-      } catch (parseErr) {
-        console.error(parseErr);
-        return res.status(500).json({ error: 'Terjadi kesalahan saat memproses data.' });
-      }
-  
-      const currentDate = Date.now();
-      const tasksWithRemainingDays = tasks.map(task => {
-        const remainingDays = Math.ceil((task.expiration - currentDate) / (24 * 60 * 60 * 1000));
-        return {
-          task: task.task,
-          remainingExpirationDays: remainingDays
+  const day = req.params.day; // Ambil parameter day dari URL
+
+  let mataPelajaran = [];
+
+  // Sesuaikan daftar mata pelajaran berdasarkan hari
+  if (day === 'senin') {
+    mataPelajaran = ['Matematika', 'IPA', 'IPS'];
+  } else if (day === 'selasa') {
+    mataPelajaran = ['ARAB', 'KIMIA', 'IPS'];
+  } 
+
+  PRModel.find({ mapel: { $in: mataPelajaran } })
+    .then(data => {
+      const hasil = {};
+
+      // Inisialisasi hasil dengan semua mata pelajaran diisi dengan strip (-)
+      for (const mapel of mataPelajaran) {
+        hasil[mapel] = {
+          ket: '-'
         };
-      });
-  
-      res.status(200).json(tasksWithRemainingDays);
+      }
+
+      // Isi hasil dengan data yang ditemukan
+      for (const item of data) {
+        const { mapel, ket, penulis } = item;
+        if (penulis) {
+          hasil[mapel] = {
+            ket,
+            penulis
+          };
+        } else {
+          hasil[mapel] = {
+            ket
+          };
+        }
+      }
+
+      return res.status(200).json(hasil);
+    })
+    .catch(error => {
+      return res.status(500).json({ error: 'Gagal mengambil data PR: ' + error.message });
     });
-  }
+}
