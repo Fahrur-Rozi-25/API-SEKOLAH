@@ -3,12 +3,12 @@ import PRModel from "../Database/models/PR.js";
 export const postPR = (req, res) => {
   const { mapel, deadline, ket, penulis } = req.body;
 
-  if (!mapel || !deadline || !ket || !penulis) {
+  if (!mapel || !ket) {
     return res.status(400).json({ error: 'Isian mapel, deadline, ket, dan penulis harus diisi.' });
   }
 
-  const waktuKedaluwarsa = new Date(); // Waktu saat ini
-  waktuKedaluwarsa.setHours(waktuKedaluwarsa.getHours() + 1);
+  // const waktuKedaluwarsa = new Date(); // Waktu saat ini
+  // waktuKedaluwarsa.setHours(waktuKedaluwarsa.getHours() + 1);
 
   // Cari PR dengan mapel yang sama
   PRModel.findOne({ mapel })
@@ -20,10 +20,10 @@ export const postPR = (req, res) => {
       } else {
         const newPRData = new PRModel({
           mapel,
-          deadline: new Date(deadline),
+          // deadline: new Date(deadline),
           ket,
           penulis,
-          waktuKedaluwarsa // Menambahkan waktu kedaluwarsa
+          // waktuKedaluwarsa // Menambahkan waktu kedaluwarsa
         });
         return newPRData.save();
       }

@@ -10,7 +10,15 @@ export const getPR = (req, res) => {
     mataPelajaran = ['Matematika', 'IPA', 'IPS'];
   } else if (day === 'selasa') {
     mataPelajaran = ['ARAB', 'KIMIA', 'IPS'];
-  } 
+  } else if (day === 'rabu') {
+    mataPelajaran = ['ARAB', 'KIMIA', 'IPS'];
+  } else if (day === 'kamis') {
+    mataPelajaran = ['ARAB', 'KIMIA', 'IPS'];
+  } else if (day === 'jumat') {
+    mataPelajaran = ['ARAB', 'KIMIA', 'IPS'];
+  } else if (day === 'sabtu') {
+    mataPelajaran = ['ARAB', 'KIMIA', 'IPS'];
+  }
 
   PRModel.find({ mapel: { $in: mataPelajaran } })
     .then(data => {
