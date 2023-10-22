@@ -7,17 +7,17 @@ export const getPR = (req, res) => {
 
   // Sesuaikan daftar mata pelajaran berdasarkan hari
   if (day === 'senin') {
-    mataPelajaran = ['Matematika', 'IPA', 'IPS'];
+    mataPelajaran = ['Fisika', 'SKI', 'Matematika Wajib' , 'Bahasa Arab' , 'PPKN'];
   } else if (day === 'selasa') {
-    mataPelajaran = ['ARAB', 'KIMIA', 'IPS'];
+    mataPelajaran = ['Seni Budaya', 'Matematika Minat', 'Bahasa Inggris' , 'Matematika Wajib' , 'Akidah Akhlak'];
   } else if (day === 'rabu') {
-    mataPelajaran = ['ARAB', 'KIMIA', 'IPS'];
+    mataPelajaran = ['PJOK', 'Bahasa Jawa', 'Bahasa Inggris' , 'Sejarah' , 'BK'];
   } else if (day === 'kamis') {
-    mataPelajaran = ['ARAB', 'KIMIA', 'IPS'];
+    mataPelajaran = ['Quran Hadist', 'Biologi', 'Bahasa Indonesia' , 'Fikih' , 'SKI'];
   } else if (day === 'jumat') {
-    mataPelajaran = ['ARAB', 'KIMIA', 'IPS'];
+    mataPelajaran = ['Fisika', 'Kimia', 'Ekonomi'];
   } else if (day === 'sabtu') {
-    mataPelajaran = ['ARAB', 'KIMIA', 'IPS'];
+    mataPelajaran = ['Bahasa Indonesia', 'Biologi', 'Kimia' , 'Matematika Minat' , 'Prakarya'];
   }
 
   PRModel.find({ mapel: { $in: mataPelajaran } })
