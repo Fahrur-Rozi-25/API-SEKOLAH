@@ -16,14 +16,14 @@ export const schedule = {
       Selasa: [
         { subject: 'Seni Budaya', time: '07:00 - 08:30' },
         // { subject: 'Seni Budaya', time: '07:45 - 08:30' },
-        { subject: 'Matematika (Minat)', time: '08:30 - 10:00' },
+        { subject: 'Aqidah akhlak', time: '08:30 - 10:00' },
         // { subject: 'Matematika (Minat)', time: '09:15 - 10:00' },
         { subject: 'ISTIRAHAT', time: '10:00 - 10:15' },
         { subject: 'Bahasa Inggris', time: '10:15 - 11:00' },
         { subject: 'Matematika (Wajib)', time: '11:00 - 13:00' },
         { subject: 'SHOLAT', time: '11:45 - 12:15' },
         // { subject: 'Matematika (Wajib)', time: '12:15 - 13:00' },
-        { subject: 'Aqidah akhlak', time: '13:00 - 14:30' },
+        { subject: 'Matematika (Minat)', time: '13:00 - 14:30' },
         // { subject: 'Aqidah akhlak', time: '13:45 - 14:30' },
       ],
       Rabu: [
@@ -36,7 +36,7 @@ export const schedule = {
         { subject: 'Sejarah', time: '11:00 - 13:00' },
         { subject: 'SHOLAT', time: '11:45 - 12:15' },
         // { subject: 'Sejarah', time: '12:15 - 13:00' },
-        { subject: 'BK', time: '13:00 - 14:30' },
+        { subject: 'Prakarya', time: '13:00 - 14:30' },
         // { subject: 'Prakarya', time: '13:45 - 14:30' },
       ],
       Kamis: [
@@ -72,7 +72,7 @@ export const schedule = {
           { subject: 'SHOLAT', time: '11:45 - 12:15' },
           { subject: 'Matematika (Minat)', time: '12:15 - 13:45' },
           // { subject: 'Matematika (Minat)', time: '13:00 - 13:45' },
-          { subject: 'Prakarya', time: '13:45 - 15:15' },
+          { subject: 'TB', time: '13:45 - 15:15' },
           // { subject: 'Prakarya', time: '14:30 - 15:15' },
   
       ],
